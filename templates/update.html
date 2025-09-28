@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Post</title>
+</head>
+<body>
+    <h1>Update Post</h1>
+
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+    <form action="{{ url_for('update', post_id=post.id) }}" method="post">
+        <p>
+            <label>Title:</label><br>
+            <input type="text" name="title" value="{{ post.title }}" required>
+        </p>
+        <p>
+            <label>Author:</label><br>
+            <input type="text" name="author" value="{{ post.author }}">
+        </p>
+        <p>
+            <label>Content:</label><br>
+            <textarea name="content" rows="5" required>{{ post.content }}</textarea>
+        </p>
+        <button type="submit">Update Post</button>
+    </form>
+
+    <p><a href="{{ url_for('index') }}">⬅ Back to Blog</a></p>
+
+</body>
+</html>
